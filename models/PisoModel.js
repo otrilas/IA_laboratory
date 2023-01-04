@@ -13,7 +13,7 @@ const Piso = db.define('pisos',{
     timestamps:false,
     freezeTableName: true
 });
-Edificio.hasMany(Piso);
+Edificio.hasMany(Piso, {foreignKey: 'id_edificio'});
 Piso.belongsTo(Edificio, {foreignKey: 'id_edificio'});
 
 export default Piso;
