@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
+import Programacion from "./ProgramacionModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -12,6 +13,8 @@ const Cronograma = db.define('cronogramas',{
     timestamps:false,
     freezeTableName: true
 });
+Programacion.hasMany(Cronograma, {foreignKey: 'id_programaciones'});
+Cronograma.belongsTo(Programacion, {foreignKey: 'id_programaciones'});
 
 export default Cronograma;
 

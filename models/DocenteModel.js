@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
+import Persona from "./PersonaModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -12,6 +13,8 @@ const Docente = db.define('docentes',{
     timestamps:false,
     freezeTableName: true
 });
+Persona.hasMany(Docente, {foreignKey: 'id_persona'});
+Docente.belongsTo(Persona, {foreignKey: 'id_persona'});
 
 export default Docente;
 

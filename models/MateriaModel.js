@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
+import Carrera from "./CarreraModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -18,6 +19,8 @@ const Materia = db.define('materias',{
     timestamps:false,
     freezeTableName: true
 });
+Carrera.hasMany(Materia, {foreignKey: 'id_carrera'});
+Materia.belongsTo(Carrera, {foreignKey: 'id_carrera'});
 
 export default Materia;
 

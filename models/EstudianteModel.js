@@ -13,7 +13,7 @@ const Estudiante = db.define('estudiantes',{
     freezeTableName: true
 });
 
-Persona.hasOne(Estudiante);
+Persona.hasMany(Estudiante, {foreignKey: 'id_persona'});
 Estudiante.belongsTo(Persona, {foreignKey: 'id_persona'});
 
 export default Estudiante;
